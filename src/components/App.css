@@ -5,7 +5,6 @@
   font-family: "Audiowide", cursive;
 }
 body {
-  /* background-color: rgb(79, 166, 201); */
   background: linear-gradient(skyblue, white, pink, rgb(10, 10, 32));
   min-height: 100vh;
 }
