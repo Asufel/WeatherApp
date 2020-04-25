@@ -90,8 +90,6 @@ class App extends Component {
     if (chosenCity === "") {
       return;
     } else {
-      console.log(chosenCity);
-
       fetch(API)
         .then((response) => {
           if (response.ok) {
@@ -101,7 +99,6 @@ class App extends Component {
         })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           this.setState({
             chosenCity: "",
             temp: data.main.temp.toFixed(0),
