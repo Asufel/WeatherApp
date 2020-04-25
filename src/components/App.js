@@ -38,15 +38,14 @@ class App extends Component {
   componentWillUnmount() {
     clearInterval(this.timerID);
   }
+
   clock() {
     const Time = new Date();
 
-    const tajm = (Time.getTime() / 1000).toFixed(0);
-    const tajm2 = parseInt(tajm);
+    const newTime = (Time.getTime() / 1000).toFixed(0);
+    const newTime2 = parseInt(newTime);
     const timeZone = this.state.timezone;
-
-    const cityTime = new Date(tajm2 * 1000 + timeZone * 1000 - 7200 * 1000);
-    // console.log(TEA);
+    const cityTime = new Date(newTime2 * 1000 + timeZone * 1000 - 7200 * 1000);
 
     const cityHours =
       cityTime.getHours() < 10

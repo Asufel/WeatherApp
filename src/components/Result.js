@@ -49,8 +49,7 @@ const Result = (props) => {
                 <p>Czas</p>
                 <p>
                   <strong>
-                    {props.state.cityHours}: {props.state.cityMinutes}:{" "}
-                    {props.state.citySeconds}
+                    {cityHours}: {cityMinutes}: {citySeconds}
                   </strong>
                   <i className="far fa-clock"></i>
                 </p>
