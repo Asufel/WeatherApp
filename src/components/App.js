@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import "./App.css";
 import Result from "./Result";
 import Form from "./Form";
+import Header from "./Header";
 
 const API_URL = "http://api.openweathermap.org/data/2.5/weather";
 const API_KEY = "55d46950bde17f9e929a16565cd3e30e";
@@ -23,7 +24,59 @@ class App extends Component {
     icon: "",
     err: "",
     timezone: "",
+    Hours: "",
+    Minutes: "",
+    Seconds: "",
+    cityHours: "",
+    cityMinutes: "",
+    citySeconds: "",
   };
+
+  componentDidMount() {
+    this.timerID = setInterval(() => this.clock(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+  clock() {
+    const Time = new Date();
+
+    const tajm = (Time.getTime() / 1000).toFixed(0);
+    const tajm2 = parseInt(tajm);
+    const timeZone = this.state.timezone;
+
+    const cityTime = new Date(tajm2 * 1000 + timeZone * 1000 - 7200 * 1000);
+    // console.log(TEA);
+
+    const cityHours =
+      cityTime.getHours() < 10
+        ? "0" + cityTime.getHours()
+        : cityTime.getHours();
+    const cityMinutes =
+      cityTime.getMinutes() < 10
+        ? "0" + cityTime.getMinutes()
+        : cityTime.getMinutes();
+    const citySeconds =
+      cityTime.getSeconds() < 10
+        ? "0" + cityTime.getSeconds()
+        : cityTime.getSeconds();
+
+    const Hours =
+      Time.getHours() < 10 ? "0" + Time.getHours() : Time.getHours();
+    const Minutes =
+      Time.getMinutes() < 10 ? "0" + Time.getMinutes() : Time.getMinutes();
+    const Seconds =
+      Time.getSeconds() < 10 ? "0" + Time.getSeconds() : Time.getSeconds();
+
+    this.setState({
+      Hours,
+      Minutes,
+      Seconds,
+      cityHours,
+      cityMinutes,
+      citySeconds,
+    });
+  }
 
   setValue = (e) => {
     const value = e.target.value;
@@ -78,24 +131,7 @@ class App extends Component {
     return (
       <Fragment>
         <div className="wrapper">
-          <h1 className="app__heading">
-            WeatherApp<i className="fas fa-sun"></i>
-            <img
-              src="http://openweathermap.org/img/wn/03d.png"
-              className="heading__cloud"
-              alt=""
-            />
-            <img
-              src="http://openweathermap.org/img/wn/03d.png"
-              className="heading__cloud"
-              alt=""
-            />
-            <img
-              src="http://openweathermap.org/img/wn/03d.png"
-              className="heading__cloud"
-              alt=""
-            />
-          </h1>
+          <Header state={this.state} />
           <Form
             state={this.state}
             setCity={this.setValue}

@@ -16,10 +16,17 @@ const Result = (props) => {
     sunset,
     chosenCity,
     timezone,
+    cityHours,
+    cityMinutes,
+    citySeconds,
   } = props.state;
 
-  let sunriseTime = new Date(sunrise * 1000).toLocaleTimeString();
-  let sunsetTime = new Date(sunset * 1000).toLocaleTimeString();
+  let sunriseTime = new Date(
+    sunrise * 1000 + timezone * 1000 - 7200 * 1000
+  ).toLocaleTimeString();
+  let sunsetTime = new Date(
+    sunset * 1000 + timezone * 1000 - 7200 * 1000
+  ).toLocaleTimeString();
 
   return (
     <Fragment>
@@ -35,6 +42,20 @@ const Result = (props) => {
               src={`http://openweathermap.org/img/wn/${icon}.png`}
               alt="weather__icon"
             />
+          </div>
+          <div className="cityParameters__parameter">
+            {cityHours === "" ? null : (
+              <>
+                <p>Czas</p>
+                <p>
+                  <strong>
+                    {props.state.cityHours}: {props.state.cityMinutes}:{" "}
+                    {props.state.citySeconds}
+                  </strong>
+                  <i className="far fa-clock"></i>
+                </p>
+              </>
+            )}
           </div>
           <div className="cityParameters__parameter">
             {temp === "" ? null : (

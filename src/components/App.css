@@ -22,7 +22,7 @@ body {
   height: 80px;
   line-height: 80px;
 }
-.app__heading::after {
+/* .app__heading::after {
   position: absolute;
   bottom: 15%;
   left: 50%;
@@ -31,7 +31,7 @@ body {
   background-color: black;
   content: "";
   transform: translate(-50%, -50%);
-}
+} */
 .app__heading > .fa-sun {
   position: absolute;
   top: -10px;
@@ -74,6 +74,35 @@ body {
   height: 70px;
   z-index: -1;
 }
+/*Clock*/
+.heading__clock,
+.clock__time {
+  transition: 0.3s linear;
+}
+.heading__clock {
+  position: absolute;
+  top: -10%;
+  height: 25px;
+  font-size: 14px;
+  margin-left: calc(50% - 60px);
+  border-radius: 10px;
+  width: 120px;
+  background-color: transparent;
+  border: none;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.clock__time {
+  line-height: 25px;
+}
+.heading__clock:hover {
+  background-color: black;
+}
+.heading__clock:hover .clock__time {
+  color: white;
+}
+
+/*Form*/
 .form {
   margin: 20px auto 0;
   max-width: 500px;
@@ -153,8 +182,9 @@ body {
 .fa-wind,
 .fa-cloud,
 .fa-sun,
-.fa-moon {
-  margin-left: 10px;
+.fa-moon,
+.fa-clock {
+  margin-left: 20px;
 }
 .error {
   background-color: rgba(0, 0, 0, 0.8);
