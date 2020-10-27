@@ -4,7 +4,7 @@ import Result from "./Result";
 import Form from "./Form";
 import Header from "./Header";
 
-const API_URL = "http://api.openweathermap.org/data/2.5/weather";
+const API_URL = "https://api.openweathermap.org/data/2.5/weather";
 const API_KEY = "55d46950bde17f9e929a16565cd3e30e";
 const UNITS = "metric";
 
